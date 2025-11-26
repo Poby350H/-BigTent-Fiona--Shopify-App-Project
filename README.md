@@ -1,6 +1,4 @@
-# -BigTent-Fiona--Shopify-App-Project
-Shopify Checkout Fee Automation App
-
+Fiona: DDP Checkout Fee Automation Engine (Shopify Functions)
 
 
 1. Overview
@@ -68,7 +66,7 @@ This flow ensures that the destination country is collected on the storefront, s
 Repository Structure & Responsibility Mapping
 
 ```
-fee-drive/
+Fiona/
 ├── extensions/
 │   ├── add-fiona/        # Cart Transform Function (TypeScript)
 │   └── set-dest-country/ # Checkout UI Extension (TypeScript)
@@ -119,7 +117,12 @@ Shopify Metafields (Product/Variant level)
 
 8. Core Cart Transform Logic (TypeScript)
 
-```http
+```typescript
+
+// merchandiseId: "gid://shopify/ProductVariant/4726219830XXXX",
+// NOTE: This Fee Variant ID is managed as a Metafield in a production environment 
+// to allow operators to change the displayed fee line item.
+
    
 import type { RunInput, RunOutput } from "../generated/api";
 
@@ -150,7 +153,7 @@ export function cartTransformRun(input: RunInput): RunOutput {
       {
         addCartLine: {
           quantity: 1,
-          merchandiseId: "gid://shopify/ProductVariant/47262198300897",
+          merchandiseId: $feeVariantGid,
           cost: {
             fixedPricePerUnit: {
               amount: fee.toFixed(2),
@@ -173,7 +176,7 @@ No external server required — ultra-fast execution & minimal maintenance
 ---
 9. GraphQL — Metafield Lookup Example
 
-```http
+```GraphQL
 query FeeVariantMetafield($id: ID!) {
   productVariant(id: $id) {
     id
@@ -221,15 +224,15 @@ UX behavior differs between Cart and Checkout
 
 Shopify API versioning evolves quickly
 
-→ Significantly higher architectural complexity than a typical CRUD web app
+**→ Significantly higher architectural complexity than a typical CRUD web app**
 
 ---
 
 12. Outcome
 
-30% reduction in U.S. checkout abandonment rate
+**30% reduction in U.S. checkout abandonment rate**
 
-48% decrease in duty/fee-related customer support inquiries
+**48% decrease in duty/fee-related customer support inquiries**
 
 Reusable, production-ready checkout fee engine established
 
@@ -247,6 +250,6 @@ Designed Metafield schema & GraphQL queries
 
 Conducted live-store testing & deployment
 
-@ End-to-end ownership — planning, engineering, release, and operations
+**End-to-end ownership — planning, engineering, release, and operations**
 
 ---
