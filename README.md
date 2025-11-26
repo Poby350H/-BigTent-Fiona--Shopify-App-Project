@@ -64,11 +64,12 @@ This flow ensures that the destination country is collected on the storefront, s
 
 Repository Structure & Responsibility Mapping
 
+```
 fee-drive/
 ├── extensions/
 │   ├── add-fiona/        # Cart Transform Function (TypeScript)
 │   └── set-dest-country/ # Checkout UI Extension (TypeScript)
-
+```
 ---
 5. Key Features
 
@@ -112,6 +113,7 @@ Shopify Metafields (Product/Variant level)
 
 8. Core Cart Transform Logic (TypeScript)
 
+```http
    
 import type { RunInput, RunOutput } from "../generated/api";
 
@@ -154,6 +156,8 @@ export function cartTransformRun(input: RunInput): RunOutput {
     ],
   };
 }
+```
+
 
 
 
@@ -162,7 +166,8 @@ No external server required — ultra-fast execution & minimal maintenance
 
 ---
 9. GraphQL — Metafield Lookup Example
-   
+
+```http
 query FeeVariantMetafield($id: ID!) {
   productVariant(id: $id) {
     id
@@ -173,6 +178,7 @@ query FeeVariantMetafield($id: ID!) {
     }
   }
 }
+```
 
 
 Merchants can update fee rates directly in Shopify Admin
