@@ -119,15 +119,20 @@ export function cartTransformRun(input: RunInput): RunOutput {
   const country = input.cart.attributes?.dest_country;
 
   // Skip if not a U.S. order
-  if (country !== "US") return { operations: [] };
+  if (country !== "US") {
+    return { operations: [] };
+  }
 
   // Calculate subtotal
   const subtotal = input.cart.lines
-    .filter(line => line.cost.totalAmount.amount > 0)
-    .reduce((acc, line) => acc + Number(line.cost.totalAmount.amount), 0);
+    .filter((line) => line.cost.totalAmount.amount > 0)
+    .reduce(
+      (acc, line) => acc + Number(line.cost.totalAmount.amount),
+      0,
+    );
 
   const feeRate = Number(
-    input.cart.buyerIdentity?.customer?.metafield?.value ?? "0.15"
+    input.cart.buyerIdentity?.customer?.metafield?.value ?? "0.15",
   );
 
   const fee = subtotal * feeRate;
@@ -141,14 +146,15 @@ export function cartTransformRun(input: RunInput): RunOutput {
           cost: {
             fixedPricePerUnit: {
               amount: fee.toFixed(2),
-              currencyCode: "USD"
-            }
-          }
-        }
-      }
-    ]
+              currencyCode: "USD",
+            },
+          },
+        },
+      },
+    ],
   };
 }
+
 
 
 Type-safe monetary calculation — prevents runtime errors
