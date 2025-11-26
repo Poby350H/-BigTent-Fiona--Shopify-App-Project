@@ -106,6 +106,8 @@ Shopify Metafields (Product/Variant level)
 
 [Screenshot](https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Screenshot.png)
 
+---
+
 8. Core Cart Transform Logic (TypeScript)
 
    
