@@ -23,6 +23,7 @@ Managing policies and fee rates via Shopify Metafields
 Giving both operators and customers a clear, transparent cost structure
 
 A Shopify app designed to keep up with frequent U.S. tariff changes and provide full DDP transparency.
+
 ---
 
 2. Problem
@@ -39,7 +40,6 @@ As a result, this is not something easily achievable with general web developmen
 
 ---
 
-
 3. Solution Approach
 
 Fiona, a fully TypeScript-based Shopify app, solves this problem by combining the platform’s modern extensibility features:
@@ -53,21 +53,22 @@ TypeScript strict mode	Ensures safe and reliable fee calculations
 
 The core idea is to maintain a seamless user experience while fully respecting Shopify’s platform constraints.
 
+---
 4. System Architecture
 
 This flow ensures that the destination country is collected on the storefront, safely persisted as a cart attribute, and then used during checkout to conditionally generate a fee line—without altering the cart page UX.
 
-[flow](/docs/Architechture.svg)
+[Diagram]([/Docs/Architecture.svg](https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Architecture.svg))
+
 
 Repository Structure & Responsibility Mapping
-
 
 fee-drive/
 ├── extensions/
 │   ├── add-fiona/        # Cart Transform Function (TypeScript)
 │   └── set-dest-country/ # Checkout UI Extension (TypeScript)
 
-
+---
 5. Key Features
 
 Automatically adds a duty/fee line only for U.S. shipments and only at checkout
@@ -81,6 +82,7 @@ Written in strict TypeScript for null-safety and reliable monetary calculations
 Fully serverless — no external backend, database, or hosting required
 
 Executes GraphQL Admin API queries to fetch Metafields and fee configuration at runtime
+
 ---
 
 
@@ -100,7 +102,12 @@ Shopify Metafields (Product/Variant level)
 
 ---
 
-7. Core Cart Transform Logic (TypeScript)
+7.App Screenshot 
+
+[Screenshot](https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Screenshot.png)
+
+8. Core Cart Transform Logic (TypeScript)
+
    
 import type { RunInput, RunOutput } from "../generated/api";
 
@@ -144,7 +151,7 @@ Type-safe monetary calculation — prevents runtime errors
 No external server required — ultra-fast execution & minimal maintenance
 
 ---
-8. GraphQL — Metafield Lookup Example
+9. GraphQL — Metafield Lookup Example
    
 query FeeVariantMetafield($id: ID!) {
   productVariant(id: $id) {
@@ -162,7 +169,7 @@ Merchants can update fee rates directly in Shopify Admin
 Policy changes require no code updates, enabling real-world operational agility
 
 ---
-9. Why Metafields?
+10. Why Metafields?
 
 Avoids hard-coding business rules inside the codebase
 
@@ -176,7 +183,7 @@ Lightweight configuration without building or maintaining a database
 
 ---
 
-10. Technical Challenges & Learning Outcomes
+11. Technical Challenges & Learning Outcomes
 
 Checkout runs inside a sandboxed iframe → no DOM/JS injection
 
@@ -192,7 +199,7 @@ Shopify API versioning evolves quickly
 
 ---
 
-11. Outcome
+12. Outcome
 
 30% reduction in U.S. checkout abandonment rate
 
@@ -202,7 +209,7 @@ Reusable, production-ready checkout fee engine established
 
 ---
 
-12. My Role
+13. My Role
 
 Problem definition → requirements analysis → architecture design
 
