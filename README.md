@@ -58,7 +58,8 @@ The core idea is to maintain a seamless user experience while fully respecting S
 
 This flow ensures that the destination country is collected on the storefront, safely persisted as a cart attribute, and then used during checkout to conditionally generate a fee line—without altering the cart page UX.
 
-[Diagram]([/Docs/Architecture.svg](https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Architecture.svg))
+![Diagram](https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Architecture.svg)
+
 
 
 Repository Structure & Responsibility Mapping
@@ -104,7 +105,8 @@ Shopify Metafields (Product/Variant level)
 
 7.App Screenshot 
 
-[Screenshot](https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Screenshot.png)
+
+![Screenshot](https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Screenshot.png)
 
 ---
 
