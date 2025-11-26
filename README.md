@@ -60,10 +60,9 @@ This flow ensures that the destination country is collected on the storefront, s
 
 
 <p align="center">
-  <img src="https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Architecture.svg" width="50%" />
+  <img src="https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Architecture.svg" width="30%" />
 </p>
 
-![Diagram](https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Architecture.svg)
 
 
 
