@@ -60,9 +60,8 @@ This flow ensures that the destination country is collected on the storefront, s
 
 
 <p align="center">
-  <img src="https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Architecture.svg" width="30%" />
+  <img src="https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Architecture.svg" width="15%" />
 </p>
-
 
 
 
@@ -111,7 +110,10 @@ Shopify Metafields (Product/Variant level)
 7.App Screenshot 
 
 
-![Screenshot](https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Screenshot.png)
+<p align="center">
+  <img src="https://github.com/Poby350H/-BigTent-Fiona--Shopify-App-Project/blob/main/docs/Screenshot.png" width="15%" />
+</p>
+
 
 ---
 
