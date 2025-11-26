@@ -53,38 +53,46 @@ The core idea is to maintain a seamless user experience while fully respecting S
 
 4. System Architecture
 
+3. Solution Approach
+
+Fiona, a fully TypeScript-based Shopify app, solves this problem by combining the platform’s modern extensibility features:
+
+Technology	Purpose
+Cart Transform Function	Automatically adds a fee line during checkout
+Checkout UI Extension	Detects destination country & displays guidance
+Theme App Embed (Liquid + Beacon)	Persists destination country from storefront
+GraphQL Admin API + Metafields	Retrieves fee rates, fee variants, and business rules
+TypeScript strict mode	Ensures safe and reliable fee calculations
+
+The core idea is to maintain a seamless user experience while fully respecting Shopify’s platform constraints.
+
+4. System Architecture
 
 This flow ensures that the destination country is collected on the storefront, safely persisted as a cart attribute, and then used during checkout to conditionally generate a fee line—without altering the cart page UX.
 
+[ Shopper ]
+    ↓
+[ Storefront Cart Page ]
+    ↓ (destination country captured)
+[ Theme App Embed · Beacon Script ]
+    ↓
+[ Cart Attributes (dest_country) ]
+    ↓
+[ Checkout ]
+    ↓
+[ Cart Transform Function (add-fiona) ]
+    └── GraphQL Admin API → Metafields lookup (fee rate, fee variant GID)
+    ↓
+[ Updated Cart: Products + Duties & Fees ]
+    ↓
+[ Order Creation ]
 
-B-Repository Structure & Responsibility Mapping
-
+Repository Structure & Responsibility Mapping
 fee-drive/
 ├── extensions/
-│   ├── add-fiona/            # Cart Transform Function  (TypeScript)
-│   └── set-dest-country/     # Checkout UI Extension  (TypeScript)
+│   ├── add-fiona/        # Cart Transform Function (TypeScript)
+│   └── set-dest-country/ # Checkout UI Extension (TypeScript)
 
--add-fiona
-
-Implements the Cart Transform Function
-
-Calculates duties & fees in TypeScript
-
-Reads Shopify Metafields and cart attributes via GraphQL
-
-Adds the fee line only for U.S. checkout transactions
-
--set-dest-country
-
-Checkout UI Extension that detects buyer country
-
-Ensures destination info stays accurate through the checkout flow
-
-Communicates eligibility conditions to the buyer
-
-Together, these extensions form a serverless pricing engine, fully contained within Shopify’s runtime
-
----
 
 5. Key Features
 
