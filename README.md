@@ -22,7 +22,7 @@ Managing policies and fee rates via Shopify Metafields
 
 Giving both operators and customers a clear, transparent cost structure
 
-“A Shopify app designed to keep up with frequent U.S. tariff changes and provide full DDP transparency.”
+A Shopify app designed to keep up with frequent U.S. tariff changes and provide full DDP transparency.
 ---
 
 2. Problem
@@ -36,22 +36,9 @@ Displaying duties or fees at the cart stage can negatively impact UX
 Logic must account for country-specific conditions, stock availability, and promotions
 
 As a result, this is not something easily achievable with general web development experience.
+
 ---
 
-3. Solution Approach
-
-Fiona, a fully TypeScript-based Shopify app, solves this problem by combining the platform’s modern extensibility features:
-
-Technology	Purpose
-Cart Transform Function	Automatically adds a fee line during checkout
-Checkout UI Extension	Detects destination country & displays guidance
-Theme App Embed (Liquid + Beacon)	Persists country attributes from the storefront
-GraphQL Admin API + Metafields	Manages fee rates, fee variants, and business rules
-TypeScript strict mode	Ensures safe and reliable fee calculations
-
-The core idea is to maintain a seamless user experience while fully respecting Shopify’s platform constraints.
-
-4. System Architecture
 
 3. Solution Approach
 
@@ -70,24 +57,11 @@ The core idea is to maintain a seamless user experience while fully respecting S
 
 This flow ensures that the destination country is collected on the storefront, safely persisted as a cart attribute, and then used during checkout to conditionally generate a fee line—without altering the cart page UX.
 
-[ Shopper ]
-    ↓
-[ Storefront Cart Page ]
-    ↓ (destination country captured)
-[ Theme App Embed · Beacon Script ]
-    ↓
-[ Cart Attributes (dest_country) ]
-    ↓
-[ Checkout ]
-    ↓
-[ Cart Transform Function (add-fiona) ]
-    └── GraphQL Admin API → Metafields lookup (fee rate, fee variant GID)
-    ↓
-[ Updated Cart: Products + Duties & Fees ]
-    ↓
-[ Order Creation ]
+[flow](/docs/Architechture.svg)
 
 Repository Structure & Responsibility Mapping
+
+
 fee-drive/
 ├── extensions/
 │   ├── add-fiona/        # Cart Transform Function (TypeScript)
