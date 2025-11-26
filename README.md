@@ -206,6 +206,10 @@ Lightweight configuration without building or maintaining a database
 ---
 
 11. Technical Challenges & Learning Outcomes
+    
+Despite this being my first time building a Shopify app,
+I learned the platform rapidly, understood its architectural constraints,
+and delivered a fully functional, production-ready solution in a short timeframe.
 
 Checkout runs inside a sandboxed iframe → no DOM/JS injection
 
